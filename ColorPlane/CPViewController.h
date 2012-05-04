@@ -10,4 +10,9 @@
 
 @interface CPViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UILabel *redLabel;
+@property (nonatomic, retain) IBOutlet UILabel *blueLabel;
+@property (nonatomic, retain) IBOutlet UILabel *greenLabel;
+
+
 @end

@@ -21,6 +21,7 @@
 		3F18FA86155372F800DF0A6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F18FA64155372F800DF0A6E /* Foundation.framework */; };
 		3F18FA8E155372F800DF0A6E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F18FA8C155372F800DF0A6E /* InfoPlist.strings */; };
 		3F18FA91155372F800DF0A6E /* ColorPlaneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F18FA90155372F800DF0A6E /* ColorPlaneTests.m */; };
+		3F18FA9B1553731A00DF0A6E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F18FA9A1553731A00DF0A6E /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,22 +39,23 @@
 		3F18FA62155372F800DF0A6E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F18FA64155372F800DF0A6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F18FA66155372F800DF0A6E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3F18FA6A155372F800DF0A6E /* ColorPlane-Info.plist */ = {isa = PBXFileReference; path = "ColorPlane-Info.plist"; sourceTree = "<group>"; };
+		3F18FA6A155372F800DF0A6E /* ColorPlane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColorPlane-Info.plist"; sourceTree = "<group>"; };
 		3F18FA6C155372F800DF0A6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F18FA6E155372F800DF0A6E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3F18FA70155372F800DF0A6E /* ColorPlane-Prefix.pch */ = {isa = PBXFileReference; path = "ColorPlane-Prefix.pch"; sourceTree = "<group>"; };
-		3F18FA71155372F800DF0A6E /* CPAppDelegate.h */ = {isa = PBXFileReference; path = CPAppDelegate.h; sourceTree = "<group>"; };
+		3F18FA70155372F800DF0A6E /* ColorPlane-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColorPlane-Prefix.pch"; sourceTree = "<group>"; };
+		3F18FA71155372F800DF0A6E /* CPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAppDelegate.h; sourceTree = "<group>"; };
 		3F18FA72155372F800DF0A6E /* CPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAppDelegate.m; sourceTree = "<group>"; };
-		3F18FA74155372F800DF0A6E /* CPViewController.h */ = {isa = PBXFileReference; path = CPViewController.h; sourceTree = "<group>"; };
+		3F18FA74155372F800DF0A6E /* CPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPViewController.h; sourceTree = "<group>"; };
 		3F18FA75155372F800DF0A6E /* CPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPViewController.m; sourceTree = "<group>"; };
 		3F18FA78155372F800DF0A6E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CPViewController_iPhone.xib; sourceTree = "<group>"; };
 		3F18FA7B155372F800DF0A6E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CPViewController_iPad.xib; sourceTree = "<group>"; };
 		3F18FA82155372F800DF0A6E /* ColorPlaneTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorPlaneTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F18FA83155372F800DF0A6E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		3F18FA8B155372F800DF0A6E /* ColorPlaneTests-Info.plist */ = {isa = PBXFileReference; path = "ColorPlaneTests-Info.plist"; sourceTree = "<group>"; };
+		3F18FA8B155372F800DF0A6E /* ColorPlaneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ColorPlaneTests-Info.plist"; sourceTree = "<group>"; };
 		3F18FA8D155372F800DF0A6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3F18FA8F155372F800DF0A6E /* ColorPlaneTests.h */ = {isa = PBXFileReference; path = ColorPlaneTests.h; sourceTree = "<group>"; };
+		3F18FA8F155372F800DF0A6E /* ColorPlaneTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorPlaneTests.h; sourceTree = "<group>"; };
 		3F18FA90155372F800DF0A6E /* ColorPlaneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorPlaneTests.m; sourceTree = "<group>"; };
+		3F18FA9A1553731A00DF0A6E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				3F18FA63155372F800DF0A6E /* UIKit.framework in Frameworks */,
 				3F18FA65155372F800DF0A6E /* Foundation.framework in Frameworks */,
 				3F18FA67155372F800DF0A6E /* CoreGraphics.framework in Frameworks */,
+				3F18FA9B1553731A00DF0A6E /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +105,7 @@
 		3F18FA61155372F800DF0A6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F18FA9A1553731A00DF0A6E /* CoreMotion.framework */,
 				3F18FA62155372F800DF0A6E /* UIKit.framework */,
 				3F18FA64155372F800DF0A6E /* Foundation.framework */,
 				3F18FA66155372F800DF0A6E /* CoreGraphics.framework */,
