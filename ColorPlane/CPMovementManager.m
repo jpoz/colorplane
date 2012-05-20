@@ -160,7 +160,7 @@ NSString* colorStringForValue(float value) {
 
 #pragma mark - Color Calculator
 
-CGFloat normalizedValueBetween(CGFloat value, CGFloat a, CGFloat b) {
+CGFloat restrictValueBetween(CGFloat value, CGFloat a, CGFloat b) {
     
     CGFloat val = value;
     val = MAX(a, val);
@@ -179,19 +179,19 @@ CGFloat normalizedValueBetween(CGFloat value, CGFloat a, CGFloat b) {
     g = ((g+fabsf(kCPGreenChannelMin))/kCPGreenChannelNormalMax);
     b = ((b+fabsf(kCPBlueChannelMin))/kCPBlueChannelNormalMax);    
     
-    r = normalizedValueBetween(r, 0, 1);
-    g = normalizedValueBetween(g, 0, 1);
-    b = normalizedValueBetween(b, 0, 1);
+    r = restrictValueBetween(r, 0, 1);
+    g = restrictValueBetween(g, 0, 1);
+    b = restrictValueBetween(b, 0, 1);
     
 //    NSLog(@"R: %f G: %f B: %f", r, g, b);
     
-    r = floorf(r*255.0);
-    g = floorf(g*255.0);
-    b = floorf(b*255.0);
+    r = roundf(r*255.0);
+    g = roundf(g*255.0);
+    b = roundf(b*255.0);
     
-    r = normalizedValueBetween(r, 0, 255);
-    g = normalizedValueBetween(g, 0, 255);
-    b = normalizedValueBetween(b, 0, 255);
+    r = restrictValueBetween(r, 0, 255);
+    g = restrictValueBetween(g, 0, 255);
+    b = restrictValueBetween(b, 0, 255);
     
     NSInteger buckets = floorf((kCPColorChannelResolution*0.01)*255.0);
     
@@ -201,9 +201,9 @@ CGFloat normalizedValueBetween(CGFloat value, CGFloat a, CGFloat b) {
     
     CGFloat factor = 255.0/(float)buckets;
     
-    r = floor(factor*r);
-    g = floor(factor*g);
-    b = floor(factor*b);
+    r = roundf(factor*r);
+    g = roundf(factor*g);
+    b = roundf(factor*b);
     
     NSLog(@"R: %f G: %f B: %f", r, g, b);
     

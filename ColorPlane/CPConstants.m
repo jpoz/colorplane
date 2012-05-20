@@ -8,7 +8,7 @@
 
 #import "CPConstants.h"
 
-float const kCPRefreshRatePerSecond     = 60.0;
+float const kCPRefreshRatePerSecond     = 5.0;
 float const kCPColorChannelResolution   = 33.3;
 
 float const kCPRedChannelMin            = -0.933350;

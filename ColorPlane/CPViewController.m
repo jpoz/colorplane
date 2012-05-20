@@ -6,10 +6,11 @@
 //  Copyright (c) 2012 Simple. All rights reserved.
 //
 
-#import <CoreMotion/CoreMotion.h>
 #import "CPViewController.h"
 #import "CPTargetView.h"
 #import "CPMovementManager.h"
+#import <CoreMotion/CoreMotion.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface CPViewController () <CPMovementManagerDelegate>
 
@@ -52,11 +53,22 @@
     [[CPMovementManager manager] resetAxisLimits];
 }
 
+#pragma mark - New Color Creation
+
+- (IBAction)newColor:(id)sender {
+    
+    [self.targetView setTargetColor:[UIColor randomColor]];
+}
+
 #pragma mark - CPMovementManagerDelegate
 
 - (void)movementManager:(CPMovementManager*)manager arrivedAtColor:(UIColor*)color {    
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.view.backgroundColor = color;
+        double duration = (1.0/(5.0*kCPRefreshRatePerSecond));
+        [UIView animateWithDuration:duration
+                         animations:^{
+                             self.view.layer.backgroundColor = color.CGColor;
+                         }];    
     });
 }
 
