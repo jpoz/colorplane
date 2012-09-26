@@ -18,4 +18,4 @@ float const kCPGreenChannelMin          = -1.075241;
 float const kCPGreenChannelMax          = 0.228134;
 
 float const kCPBlueChannelMin           = -1.622818;
-float const kCPBlueChannelMax           = 0.250931;
+float const kCPBlueChannelMax           = 0.250931;     

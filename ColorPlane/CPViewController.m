@@ -26,12 +26,7 @@
     
     [super viewDidLoad];    
     
-    CPTargetView *targetView = [[[CPTargetView alloc] initWithFrame:CGRectMake(0, 
-                                                                               0, 
-                                                                               320, 
-                                                                               136)] autorelease];
-    
-    [targetView setTargetColor:[UIColor randomColor]];
+    CPTargetView *targetView = [[[CPTargetView alloc] initWithFrame:self.view.bounds] autorelease];
     [self.view addSubview:targetView];
     self.targetView = targetView;
     

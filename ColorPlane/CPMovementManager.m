@@ -80,10 +80,10 @@ NSString* colorStringForValue(float value) {
                                                                                   [NSNumber numberWithFloat:CGFLOAT_MAX],
                                                                                   [NSNumber numberWithFloat:CGFLOAT_MIN],
                                                                                   nil]
-                                                                         forKeys:[NSMutableArray arrayWithObjects:
-                                                                                  kAxisLimitMinKey,
-                                                                                  kAxisLimitMaxKey,
-                                                                                  nil]];
+                                                                                 forKeys:[NSMutableArray arrayWithObjects:
+                                                                                          kAxisLimitMinKey,
+                                                                                          kAxisLimitMaxKey,
+                                                                                          nil]];
     
     NSMutableDictionary *blankMinMaxHolder2 = [NSMutableDictionary dictionaryWithObjects:[NSMutableArray arrayWithObjects:
                                                                                          [NSNumber numberWithFloat:CGFLOAT_MAX],
@@ -98,10 +98,10 @@ NSString* colorStringForValue(float value) {
                                                                                          [NSNumber numberWithFloat:CGFLOAT_MAX],
                                                                                          [NSNumber numberWithFloat:CGFLOAT_MIN],
                                                                                          nil]
-                                                                                forKeys:[NSMutableArray arrayWithObjects:
-                                                                                         kAxisLimitMinKey,
-                                                                                         kAxisLimitMaxKey,
-                                                                                         nil]];
+                                                                                 forKeys:[NSMutableArray arrayWithObjects:
+                                                                                          kAxisLimitMinKey,
+                                                                                          kAxisLimitMaxKey,
+                                                                                          nil]];
     
     NSMutableDictionary *axisLimits = [NSMutableDictionary dictionaryWithObjects:[NSMutableArray arrayWithObjects:
                                                                                   blankMinMaxHolder1,
@@ -182,8 +182,6 @@ CGFloat restrictValueBetween(CGFloat value, CGFloat a, CGFloat b) {
     r = restrictValueBetween(r, 0, 1);
     g = restrictValueBetween(g, 0, 1);
     b = restrictValueBetween(b, 0, 1);
-    
-//    NSLog(@"R: %f G: %f B: %f", r, g, b);
     
     r = roundf(r*255.0);
     g = roundf(g*255.0);
