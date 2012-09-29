@@ -13,10 +13,6 @@
 
 @property (nonatomic, retain) CAShapeLayer *targetColorLayer;
 
-- (void)startTimer;
-- (void)stopTimer;
-- (void)resetTimer;
-
 @end
 
 @implementation CPTargetView
@@ -38,6 +34,10 @@ CGRect rectForTargetInFrame(CGRect frame) {
 
 - (void)commonInit {
     
+    self.backgroundColor = [UIColor clearColor];
+    self.userInteractionEnabled = NO;
+    self.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    
     CGMutablePathRef targetColorPath = CGPathCreateMutable();
     CGRect targetRect = rectForTargetInFrame(self.bounds);
     CGPathAddEllipseInRect(targetColorPath, NULL, targetRect);
@@ -46,13 +46,11 @@ CGRect rectForTargetInFrame(CGRect frame) {
     targetColorLayer.path = targetColorPath;
     targetColorLayer.fillColor = [UIColor redColor].CGColor;
     targetColorLayer.strokeColor = [UIColor blueColor].CGColor;
-    targetColorLayer.lineWidth = 10.0;
+    targetColorLayer.lineWidth = 7.0;
     targetColorLayer.strokeStart = 0.0;
     targetColorLayer.strokeEnd = 1.0;
     [self.layer addSublayer:targetColorLayer];
     self.targetColorLayer = targetColorLayer;
-    
-    [self startTimer];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -74,7 +72,6 @@ CGRect rectForTargetInFrame(CGRect frame) {
     if (self) {
  
         [self commonInit];
-        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;
@@ -82,32 +79,51 @@ CGRect rectForTargetInFrame(CGRect frame) {
 
 - (void)setTargetColor:(UIColor*)targetColor {
 
-    self.backgroundColor = targetColor;
+    self.targetColorLayer.backgroundColor = targetColor.CGColor;
 }
 
 - (UIColor*)targetColor {
 
-    return self.backgroundColor;
+    return [UIColor colorWithCGColor:self.targetColorLayer.backgroundColor];
 }
 
-- (void)startTimer {
+- (void)startTimer:(id)sender {
     
     CABasicAnimation *timerAnimation = [CABasicAnimation animation];
     timerAnimation.duration = 60.0;
     timerAnimation.fromValue = [NSNumber numberWithInt:0.0];
     timerAnimation.toValue = [NSNumber numberWithInt:1.0];
     timerAnimation.keyPath = @"strokeStart";
+    timerAnimation.fillMode = kCAFillModeForwards;
+    timerAnimation.removedOnCompletion = NO;
     [self.targetColorLayer addAnimation:timerAnimation forKey:@"timerAnimation"];
 }
 
-- (void)stopTimer {
+- (void)stopTimer:(id)sender {
     
+    CAShapeLayer *targetColorLayer = self.targetColorLayer;
+    UIButton *button = (UIButton*)sender;
     
+    if(targetColorLayer.speed == 0.0) {
+        [button setTitle:@"Stop" forState:UIControlStateNormal];
+        CFTimeInterval pausedTime = [targetColorLayer timeOffset];
+        targetColorLayer.speed = 1.0;
+        targetColorLayer.timeOffset = 0.0;
+        targetColorLayer.beginTime = 0.0;
+        CFTimeInterval timeSincePause = [targetColorLayer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+        targetColorLayer.beginTime = timeSincePause;
+    } else {
+        [button setTitle:@"Resume" forState:UIControlStateNormal];
+        CFTimeInterval pausedTime = [targetColorLayer convertTime:CACurrentMediaTime() fromLayer:nil];
+        targetColorLayer.speed = 0.0;
+        targetColorLayer.timeOffset = pausedTime;
+    }
 }
 
-- (void)resetTimer {
+- (void)resetTimer:(id)sender {
     
-    
+    [self.targetColorLayer removeAnimationForKey:@"timerAnimation"];
+    self.targetColorLayer.strokeStart = 0.0;
 }
 
 @end

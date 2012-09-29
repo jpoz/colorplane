@@ -41,18 +41,21 @@
     }
 }
 
-#pragma mark - Axis Limits Helper
+#pragma mark - Timer Control
+
+- (IBAction)start:(id)sender {
+    
+    [self.targetView startTimer:sender];
+}
 
 - (IBAction)reset:(id)sender {
     
-    [[CPMovementManager manager] resetAxisLimits];
+    [self.targetView resetTimer:sender];
 }
 
-#pragma mark - New Color Creation
-
-- (IBAction)newColor:(id)sender {
+- (IBAction)stop:(id)sender {
     
-    [self.targetView setTargetColor:[UIColor randomColor]];
+    [self.targetView stopTimer:sender];
 }
 
 #pragma mark - CPMovementManagerDelegate

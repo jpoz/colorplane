@@ -13,4 +13,8 @@
 - (void)setTargetColor:(UIColor*)targetColor;
 - (UIColor*)targetColor;
 
+- (void)startTimer:(id)sender;
+- (void)stopTimer:(id)sender;
+- (void)resetTimer:(id)sender;
+
 @end
