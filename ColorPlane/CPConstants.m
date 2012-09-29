@@ -3,13 +3,13 @@
 //  ColorPlane
 //
 //  Created by Collin Ruffenach on 5/13/12.
-//  Copyright (c) 2012 Simple. All rights reserved.
+//  Copyright (c) 2012 Notion HQ. All rights reserved.
 //
 
 #import "CPConstants.h"
 
-float const kCPRefreshRatePerSecond     = 5.0;
-float const kCPColorChannelResolution   = 33.3;
+float const kCPRefreshRatePerSecond     = 20.0;
+float const kCPColorChannelResolution   = 50.0;
 
 float const kCPRedChannelMin            = -0.933350;
 float const kCPRedChannelMax            = 0.523010;
