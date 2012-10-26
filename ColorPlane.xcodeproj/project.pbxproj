@@ -17,6 +17,7 @@
 		0B4BEFBC1560E105000718BC /* UIColor+CPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BEFBA1560E105000718BC /* UIColor+CPColor.m */; };
 		0B4BEFBF1560E11A000718BC /* CPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BEFBE1560E11A000718BC /* CPConstants.m */; };
 		0B4BEFC01560E11A000718BC /* CPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4BEFBE1560E11A000718BC /* CPConstants.m */; };
+		0BEE19D2163A2951000F3E24 /* CPColorMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE19D1163A2950000F3E24 /* CPColorMapOverlay.m */; };
 		0BF7DF5A1623628F00DECFAD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7DF591623628F00DECFAD /* Default@2x.png */; };
 		0BF7DF5D1623629700DECFAD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7DF5C1623629700DECFAD /* Default-568h@2x.png */; };
 		0BF7DF5F162362DD00DECFAD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF7DF5E162362DD00DECFAD /* Default.png */; };
@@ -59,6 +60,8 @@
 		0B4BEFBA1560E105000718BC /* UIColor+CPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CPColor.m"; sourceTree = "<group>"; };
 		0B4BEFBD1560E11A000718BC /* CPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPConstants.h; sourceTree = "<group>"; };
 		0B4BEFBE1560E11A000718BC /* CPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPConstants.m; sourceTree = "<group>"; };
+		0BEE19D0163A294F000F3E24 /* CPColorMapOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPColorMapOverlay.h; sourceTree = "<group>"; };
+		0BEE19D1163A2950000F3E24 /* CPColorMapOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPColorMapOverlay.m; sourceTree = "<group>"; };
 		0BF7DF591623628F00DECFAD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0BF7DF5C1623629700DECFAD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0BF7DF5E162362DD00DECFAD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				3F18FA75155372F800DF0A6E /* CPViewController.m */,
 				0B4BEF9F155EE416000718BC /* CPTargetView.h */,
 				0B4BEFA0155EE416000718BC /* CPTargetView.m */,
+				0BEE19D0163A294F000F3E24 /* CPColorMapOverlay.h */,
+				0BEE19D1163A2950000F3E24 /* CPColorMapOverlay.m */,
 				0B4BEFAA15602D84000718BC /* CPMovementManager.h */,
 				0B4BEFAB15602D84000718BC /* CPMovementManager.m */,
 				0B4BEFB91560E105000718BC /* UIColor+CPColor.h */,
@@ -329,6 +334,7 @@
 				0B4BEFAC15602D84000718BC /* CPMovementManager.m in Sources */,
 				0B4BEFBB1560E105000718BC /* UIColor+CPColor.m in Sources */,
 				0B4BEFBF1560E11A000718BC /* CPConstants.m in Sources */,
+				0BEE19D2163A2951000F3E24 /* CPColorMapOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

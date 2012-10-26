@@ -9,6 +9,7 @@
 #import "CPViewController.h"
 #import "CPTargetView.h"
 #import "CPMovementManager.h"
+#import "CPColorMapOverlay.h"
 #import <CoreMotion/CoreMotion.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -27,11 +28,19 @@
     
     [super viewDidLoad];    
     
-//    CPTargetView *targetView = [[[CPTargetView alloc] initWithFrame:self.view.bounds] autorelease];
-//    [self.view addSubview:targetView];
-//    self.targetView = targetView;
+    CPTargetView *targetView = [[[CPTargetView alloc] initWithFrame:self.view.bounds] autorelease];
+    [self.view addSubview:targetView];
+    self.targetView = targetView;
+    
+    CPColorMapOverlay *colorMap = [[CPColorMapOverlay alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:colorMap];
     
     [[CPMovementManager manager] setDelegate:self];
+    
+    self.view.backgroundColor = [UIColor colorWithHue:(120.0/365.0)
+                                           saturation:1.0
+                                           brightness:0.8
+                                                alpha:1.0];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

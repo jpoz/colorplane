@@ -44,9 +44,9 @@ CGRect rectForTargetInFrame(CGRect frame) {
     
     CAShapeLayer *targetColorLayer = [CAShapeLayer layer];
     targetColorLayer.path = targetColorPath;
-    targetColorLayer.fillColor = [UIColor redColor].CGColor;
+    targetColorLayer.fillColor = [UIColor clearColor].CGColor;
     targetColorLayer.strokeColor = [UIColor blueColor].CGColor;
-    targetColorLayer.lineWidth = 7.0;
+    targetColorLayer.lineWidth = 35.0;
     targetColorLayer.strokeStart = 0.0;
     targetColorLayer.strokeEnd = 1.0;
     [self.layer addSublayer:targetColorLayer];
