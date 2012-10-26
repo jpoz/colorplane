@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Notion HQ. All rights reserved.
 //
 
+#import <CoreMotion/CoreMotion.h>
 #import <Foundation/Foundation.h>
 
 @protocol CPMovementManagerDelegate;
@@ -17,6 +18,7 @@
 @property (nonatomic, assign) id <CPMovementManagerDelegate> delegate;
 
 - (void)resetAxisLimits;
+- (void)reset;
 
 @end
 
@@ -24,6 +26,7 @@
 
 @required
 
+- (void)movementManager:(CPMovementManager*)manager gotAttitude:(CMAttitude*)attitude;
 - (void)movementManager:(CPMovementManager*)manager arrivedAtColor:(UIColor*)color;
 
 @end

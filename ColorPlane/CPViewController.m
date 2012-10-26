@@ -20,15 +20,16 @@
 
 @implementation CPViewController
 
+@synthesize dataLabel = _dataLabel;
 @synthesize targetView = _targetView;
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];    
     
-    CPTargetView *targetView = [[[CPTargetView alloc] initWithFrame:self.view.bounds] autorelease];
-    [self.view addSubview:targetView];
-    self.targetView = targetView;
+//    CPTargetView *targetView = [[[CPTargetView alloc] initWithFrame:self.view.bounds] autorelease];
+//    [self.view addSubview:targetView];
+//    self.targetView = targetView;
     
     [[CPMovementManager manager] setDelegate:self];
 }
@@ -59,6 +60,17 @@
 }
 
 #pragma mark - CPMovementManagerDelegate
+
+- (IBAction)resetReferenceFrame:(id)sender {
+    
+    [[CPMovementManager manager] reset];
+}
+
+- (void)movementManager:(CPMovementManager*)manager gotAttitude:(CMAttitude*)attitude {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.dataLabel.text = [NSString stringWithFormat:@"Roll:%0.2f\nYaw:%0.2f\nPitch:%0.2f", attitude.roll, attitude.yaw, attitude.pitch];
+    });
+}
 
 - (void)movementManager:(CPMovementManager*)manager arrivedAtColor:(UIColor*)color {    
     dispatch_async(dispatch_get_main_queue(), ^{

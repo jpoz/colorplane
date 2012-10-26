@@ -7,7 +7,6 @@
 //
 
 #import "CPMovementManager.h"
-#import <CoreMotion/CoreMotion.h>
 
 #define kAxisLimitRedKey @"X"
 #define kAxisLimitGreenKey @"Y"
@@ -28,6 +27,7 @@
 @property (nonatomic, retain) CMMotionManager *manager;
 @property (nonatomic, retain) NSOperationQueue *accelerometerQueue;
 @property (nonatomic, retain) NSMutableDictionary *axisLimits;
+@property (nonatomic, retain) CMAttitude *referenceAttitude;
 
 @end
 
@@ -42,6 +42,7 @@
 @synthesize manager = _manager;
 @synthesize accelerometerQueue = _accelerometerQueue;
 @synthesize axisLimits = _axisLimits;
+@synthesize referenceAttitude = _referenceAttitude;
 
 #pragma mark - Helper Methods
 
@@ -238,6 +239,32 @@ CGFloat restrictValueBetween(CGFloat value, CGFloat a, CGFloat b) {
 
 #pragma mark - Initializer
 
+- (void)start {
+    self.referenceAttitude = nil;
+    [self.manager startDeviceMotionUpdates];
+    [self.manager startDeviceMotionUpdatesToQueue:self.accelerometerQueue
+                                      withHandler:^(CMDeviceMotion *motion, NSError *error) {
+                                          if(error) {
+                                              NSLog(@"Error from CPMotionManager: %@ User Info: %@", error.localizedDescription, error.userInfo);
+                                          } else {
+                                              if(!self.referenceAttitude) {
+                                                  self.referenceAttitude = motion.attitude;
+                                                  NSLog(@"Setting refernce attitude to: %@", self.referenceAttitude);                                                
+                                              }
+                                              CMAttitude *attitude = motion.attitude;
+//                                              NSLog(@"%@", attitude);
+                                              [attitude multiplyByInverseOfAttitude:self.referenceAttitude];
+//                                              NSLog(@"%@", attitude);
+                                              [self.delegate movementManager:self gotAttitude:attitude];
+                                          }
+                                      }];
+}
+
+- (void)reset {
+    [self.manager stopDeviceMotionUpdates];
+    [self start];
+}
+
 - (id)init {
     
     self = [super init];
@@ -251,16 +278,9 @@ CGFloat restrictValueBetween(CGFloat value, CGFloat a, CGFloat b) {
         [self resetAxisLimits];
         
         self.manager = [[[CMMotionManager alloc] init] autorelease];
-        self.accelerometerQueue = [[NSOperationQueue alloc] init];
-        [self.manager setAccelerometerUpdateInterval:(1.0/kCPRefreshRatePerSecond)];
-        [self.manager startAccelerometerUpdatesToQueue:self.accelerometerQueue
-                                           withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {                                                             
-                                               if(error) {                                                   
-                                                   NSLog(@"Error from CPMotionManager: %@ User Info: %@", error.localizedDescription, error.userInfo);
-                                               } else {   
-                                                   [self.delegate movementManager:self arrivedAtColor:[self colorForAccelerometerData:accelerometerData]];
-                                               }
-                                           }];
+        self.accelerometerQueue = [[NSOperationQueue alloc] init];        
+        [self.manager setDeviceMotionUpdateInterval:(1.0/kCPRefreshRatePerSecond)];
+        [self start];
     }
     
     return self;

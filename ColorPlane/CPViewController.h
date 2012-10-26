@@ -12,4 +12,8 @@
 
 @interface CPViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UILabel *dataLabel;
+
+- (IBAction)resetReferenceFrame:(id)sender;
+
 @end
