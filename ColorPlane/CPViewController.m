@@ -40,6 +40,8 @@
     
     [self changeColors];
     
+    self.colorMapOverlayView.backgroundColor =  [UIColor colorWithHue:(0/0) saturation:0.0 brightness:kCPBrightness alpha:1.0];
+    
     [[CPMovementManager manager] setDelegate:self];
 }
 
@@ -52,21 +54,25 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    // HACK HACK HACK HACK HACK HACK HACK
     [self changeColors];
 }
 
 - (void)changeColors {
+    int hue1   = (arc4random() % 360);
+    float sat1 = (arc4random() % 70)/100.0;
+
+    
+    NSLog(@"Background %d° %0.2f", hue1, sat1);
+    self.colorMapOverlayView.backgroundColor =  [UIColor colorWithHue:(hue1/360.0) saturation:sat1 brightness:kCPBrightness alpha:1.0];
+
+    
     int hue2 = (arc4random() % 360);
     float sat2 = (arc4random() % 70)/100.0;
     
     NSLog(@"Target %d° %0.2f", hue2, sat2);
-    self.targetView.targetColor =  [UIColor colorWithHue:(hue2/360.0) saturation:sat2 brightness:kCPBrightness alpha:1.0];
+    self.targetView.targetColor =  [UIColor colorWithHue:(hue1/360.0) saturation:sat1 brightness:kCPBrightness alpha:1.0];
     
-    int hue1   = (arc4random() % 360);
-    float sat1 = (arc4random() % 70)/100.0;
-    
-    NSLog(@"Background %d° %0.2f", hue1, sat1);
-    self.colorMapOverlayView.backgroundColor =  [UIColor colorWithHue:(hue1/360.0) saturation:sat1 brightness:kCPBrightness alpha:1.0];
 }
 
 
