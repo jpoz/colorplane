@@ -33,7 +33,6 @@ CGRect rectForTargetInFrame(CGRect frame) {
 }
 
 - (void)commonInit {
-    
     self.backgroundColor = [UIColor clearColor];
     self.userInteractionEnabled = NO;
     self.transform = CGAffineTransformMakeRotation(-M_PI_2);
@@ -45,7 +44,7 @@ CGRect rectForTargetInFrame(CGRect frame) {
     CAShapeLayer *targetColorLayer = [CAShapeLayer layer];
     targetColorLayer.path = targetColorPath;
     targetColorLayer.fillColor = [UIColor clearColor].CGColor;
-    targetColorLayer.strokeColor = [UIColor blueColor].CGColor;
+    targetColorLayer.strokeColor = [UIColor clearColor].CGColor;
     targetColorLayer.lineWidth = 35.0;
     targetColorLayer.strokeStart = 0.0;
     targetColorLayer.strokeEnd = 1.0;
@@ -79,7 +78,7 @@ CGRect rectForTargetInFrame(CGRect frame) {
 
 - (void)setTargetColor:(UIColor*)targetColor {
 
-    self.targetColorLayer.backgroundColor = targetColor.CGColor;
+    self.targetColorLayer.strokeColor = targetColor.CGColor;
 }
 
 - (UIColor*)targetColor {

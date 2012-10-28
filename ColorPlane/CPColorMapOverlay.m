@@ -8,8 +8,6 @@
 
 #import "CPColorMapOverlay.h"
 
-#define kCPEdgeUnitSize .3
-
 typedef enum {
     CPGradientDirectionUp,
     CPGradientDirectionDown,
@@ -23,7 +21,8 @@ typedef enum {
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        // Background Color needs to be in this Layer
+        self.backgroundColor =  [UIColor clearColor];
     }
     return self;
 }
@@ -82,6 +81,8 @@ void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor
     
     NSArray *colors = [NSArray arrayWithObjects:(id)startColor, (id)endColor, nil];
     
+    CGContextSetBlendMode(context, kCGBlendModeScreen);
+    
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef) colors, locations);
     
     CGPoint startPoint = startPointForDirection(rect, direction);
@@ -124,26 +125,26 @@ void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     drawLinearGradient(ctx,
                        leftSide,
-                       [[[UIColor redColor] colorWithAlphaComponent:0.6] CGColor],
-                       [[UIColor clearColor] CGColor],
+                       [[UIColor colorWithHue:(270/360.0) saturation:1 brightness:kCPBrightness alpha:1.0] CGColor],
+                       [[UIColor colorWithHue:(0/360.0) saturation:0 brightness:kCPBrightness alpha:0] CGColor],
                        CPGradientDirectionRight);
     
     drawLinearGradient(ctx,
                        bottomSide,
-                       [[[UIColor blackColor] colorWithAlphaComponent:0.6] CGColor],
-                       [[UIColor clearColor] CGColor],
+                       [[UIColor colorWithHue:(180/360.0) saturation:1 brightness:kCPBrightness alpha:1.0] CGColor],
+                       [[UIColor colorWithHue:(270/360.0) saturation:0 brightness:kCPBrightness alpha:0] CGColor],
                        CPGradientDirectionUp);
     
     drawLinearGradient(ctx,
                        rightSide,
-                       [[[UIColor blueColor] colorWithAlphaComponent:0.6] CGColor],
-                       [[UIColor clearColor] CGColor],
+                       [[UIColor colorWithHue:(90/360.0) saturation:1 brightness:kCPBrightness alpha:1.0] CGColor],
+                       [[UIColor colorWithHue:(180/360.0) saturation:0 brightness:kCPBrightness alpha:0] CGColor],
                        CPGradientDirectionLeft);
     
     drawLinearGradient(ctx,
                        topSide,
-                       [[[UIColor greenColor] colorWithAlphaComponent:0.6] CGColor],
-                       [[UIColor clearColor] CGColor],
+                       [[UIColor colorWithHue:(0/360.0) saturation:1 brightness:kCPBrightness alpha:1.0] CGColor],
+                       [[UIColor colorWithHue:(90/360.0) saturation:0 brightness:kCPBrightness alpha:0] CGColor],
                        CPGradientDirectionDown);
 }
 @end

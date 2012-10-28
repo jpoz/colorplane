@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#define kCPEdgeUnitSize .7
+#define kCPSaturation .9
+#define kCPBrightness .7
+
 @interface CPColorMapOverlay : UIView
 
 @end
