@@ -71,7 +71,7 @@
     float sat2 = (arc4random() % 70)/100.0;
     
     NSLog(@"Target %d° %0.2f", hue2, sat2);
-    self.targetView.targetColor =  [UIColor colorWithHue:(hue1/360.0) saturation:sat1 brightness:kCPBrightness alpha:1.0];
+    self.targetView.targetColor =  [UIColor colorWithHue:(hue2/360.0) saturation:sat2 brightness:kCPBrightness alpha:1.0];
     
 }
 
